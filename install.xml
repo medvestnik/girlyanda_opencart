@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name>Новогодняя гирлянда</name>
+  <code>newyearlights</code>
+  <version>1.0</version>
+  <author>ovchinnikov.net</author>
+  <link>https://ovchinnikov.net</link>
+  <file path="catalog/view/theme/*/template/common/header.twig">
+    <operation>
+      <search><![CDATA[</head>]]></search>
+      <add position="before"><![CDATA[<style>
+          #gir {
+            position:absolute;
+            top:45px;
+            left:0;
+            background-image:url('image/catalog/girlyanda.png');
+            height:36px;
+            width:100%;
+            overflow:hidden;
+            z-index:99
+        }  
+        #nums_1 {
+            padding:100px
+        }
+        .gir_1 {
+            background-position: 0 0
+        }
+        .gir_2 {
+            background-position: 0 -36px
+        }
+        .gir_3 {
+            background-position: 0 -72px
+        }
+      </style>
+      <script type="text/javascript">
+        function gir() {  
+            nums = document.getElementById('nums_1').innerHTML;
+            if(nums == 1) {
+                document.getElementById('gir').className='gir_1';document.getElementById('nums_1').innerHTML='2';
+            }  
+            if(nums == 2) {
+                document.getElementById('gir').className='gir_2';document.getElementById('nums_1').innerHTML='3';
+            }  
+            if(nums == 3) {
+                document.getElementById('gir').className='gir_3';document.getElementById('nums_1').innerHTML='1';
+            }  
+        }  
+        setInterval(function(){gir()}, 1000);
+      </script>
+      ]]></add>
+    </operation>
+    <operation>
+      <search><![CDATA[<header>]]></search>
+      <add position="before"><![CDATA[<div id="gir" class="gir_3">
+    <div id="nums_1">1</div>
+</div>]]></add>
+    </operation>
+  </file>
+</modification>
